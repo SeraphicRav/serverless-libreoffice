@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SOURCE=tags/libreoffice-6.0.6.2
+
 # install basic stuff required for compilation
 sudo yum-config-manager --enable epel
 sudo yum install git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
@@ -13,8 +15,8 @@ sudo yum groupinstall "Development Tools" -y
 # clone libreoffice sources
 git clone --depth=1 git://anongit.freedesktop.org/libreoffice/core libreoffice
 cd libreoffice
-git fetch --all --tags --prune
-git checkout tags/libreoffice-6.0.6.2 -b build
+git fetch origin refs/$SOURCE
+git checkout $SOURCE -b build
 
 # set this cache if you are going to compile several times
 ccache --max-size 16 G && ccache -s
