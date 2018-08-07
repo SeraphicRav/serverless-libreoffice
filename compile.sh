@@ -4,7 +4,8 @@ SOURCE=tags/libreoffice-6.0.6.2
 
 # install basic stuff required for compilation
 sudo yum-config-manager --enable epel
-sudo yum install git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
+sudo yum remove gcc48 -y
+sudo yum install gcc64* git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
 	gmp-devel libicu-devel icu python34-devel google-crosextra-caladea-fonts \
 	google-crosextra-carlito-fonts liberation-serif-fonts liberation-sans-fonts \
 	mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libICE-devel \
@@ -23,7 +24,7 @@ ccache --max-size 16 G && ccache -s
 
 # the most important part. Run ./autogen.sh --help to see wha each option means
 ./autogen.sh --disable-report-builder --disable-lpsolve --disable-coinmp \
-	--enable-mergelibs --disable-odk --disable-gtk --disable-systray --disable-cairo-canvas \
+	--enable-mergelibs --disable-odk --disable-gtk --disable-cairo-canvas \
 	--disable-dbus --disable-sdremote --disable-sdremote-bluetooth --disable-gio --disable-randr \
 	--disable-gstreamer-1-0 --disable-cve-tests --disable-cups --disable-extension-update \
 	--disable-postgresql-sdbc --disable-lotuswordpro --disable-firebird-sdbc --disable-scripting-beanshell \
