@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SOURCE=tags/libreoffice-6.0.6.2
+SOURCE=heads/libreoffice-5-4-7
 
 # install basic stuff required for compilation
 sudo yum-config-manager --enable epel
@@ -16,14 +16,14 @@ sudo yum groupinstall "Development Tools" -y
 # clone libreoffice sources
 git clone --depth=1 git://anongit.freedesktop.org/libreoffice/core libreoffice
 cd libreoffice
-git fetch origin refs/$SOURCE
+git fetch origin $SOURCE
 git checkout FETCH_HEAD
 
 # set this cache if you are going to compile several times
 ccache --max-size 16 G && ccache -s
 
 # the most important part. Run ./autogen.sh --help to see wha each option means
-./autogen.sh --disable-report-builder --disable-lpsolve --disable-coinmp \
+./autogen.sh --disable-report-builder --disable-systray --disable-lpsolve --disable-coinmp \
 	--enable-mergelibs --disable-odk --disable-gtk --disable-cairo-canvas \
 	--disable-dbus --disable-sdremote --disable-sdremote-bluetooth --disable-gio --disable-randr \
 	--disable-gstreamer-1-0 --disable-cve-tests --disable-cups --disable-extension-update \
@@ -35,7 +35,8 @@ ccache --max-size 16 G && ccache -s
 	--disable-kde4 --with-system-expat --with-system-libxml --with-system-nss \
 	--disable-introspection --without-krb5 --disable-python --disable-pch \
 	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking \
-	--disable-extension-integration --disable-neon
+	--disable-extension-integration --disable-neon \
+	--disable-directx --disable-gui
 
 # this will take 0-2 hours to compile, depends on your machine
 make
