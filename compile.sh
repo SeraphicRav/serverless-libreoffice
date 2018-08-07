@@ -16,7 +16,7 @@ sudo yum groupinstall "Development Tools" -y
 git clone --depth=1 git://anongit.freedesktop.org/libreoffice/core libreoffice
 cd libreoffice
 git fetch origin refs/$SOURCE
-git checkout $SOURCE -b build
+git checkout FETCH_HEAD
 
 # set this cache if you are going to compile several times
 ccache --max-size 16 G && ccache -s
