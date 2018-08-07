@@ -13,6 +13,8 @@ sudo yum groupinstall "Development Tools" -y
 # clone libreoffice sources
 git clone --depth=1 git://anongit.freedesktop.org/libreoffice/core libreoffice
 cd libreoffice
+git fetch --all --tags --prune
+git checkout tags/libreoffice-6.0.6.2 -b build
 
 # set this cache if you are going to compile several times
 ccache --max-size 16 G && ccache -s
@@ -29,7 +31,8 @@ ccache --max-size 16 G && ccache -s
 	--disable-avahi --without-myspell-dicts --disable-ext-mariadb-connector --with-galleries="no" \
 	--disable-kde4 --with-system-expat --with-system-libxml --with-system-nss \
 	--disable-introspection --without-krb5 --disable-python --disable-pch \
-	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking
+	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking \
+	--disable-extension-integration --disable-fetch-external --disable-neon
 
 # this will take 0-2 hours to compile, depends on your machine
 make
