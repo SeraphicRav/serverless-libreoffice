@@ -34,7 +34,7 @@ ccache --max-size 16 G && ccache -s
 	--disable-kde4 --with-system-expat --with-system-libxml --with-system-nss \
 	--disable-introspection --without-krb5 --disable-python --disable-pch \
 	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking \
-	--disable-extension-integration --disable-fetch-external --disable-neon
+	--disable-extension-integration --disable-neon
 
 # this will take 0-2 hours to compile, depends on your machine
 make
