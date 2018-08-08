@@ -8,7 +8,7 @@ sudo yum remove gcc48 -y
 sudo yum install gcc64* gcc-c++ git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
 	gmp-devel libicu-devel icu python34-devel google-crosextra-caladea-fonts \
 	google-crosextra-carlito-fonts liberation-serif-fonts liberation-sans-fonts \
-	mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libICE-devel \
+	mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libICE-devel libepoxy-devel \
 	libSM-devel libXrender-devel libxslt-devel gperf fontconfig-devel libpng-devel libXt-devel \
 	expat-devel libcurl-devel nss-devel nspr-devel libSM-devel openssl-devel expat-devel.x86_64 -y
 sudo yum groupinstall "Development Tools" -y
@@ -36,7 +36,7 @@ ccache --max-size 16 G && ccache -s
 	--disable-introspection --without-krb5 --disable-python --disable-pch \
 	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking \
 	--disable-extension-integration --disable-neon \
-	--disable-directx --disable-gui
+	--disable-directx --disable-gui 
 
 # this will take 0-2 hours to compile, depends on your machine
 make
