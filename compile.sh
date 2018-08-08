@@ -9,7 +9,7 @@ sudo yum install gcc64* git autoconf ccache nasm libffi-devel libmpc-devel mpfr-
 	gmp-devel libicu-devel icu python34-devel google-crosextra-caladea-fonts \
 	google-crosextra-carlito-fonts liberation-serif-fonts liberation-sans-fonts \
 	mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libICE-devel \
-	libSM-devel libXrender-devel libxslt-devel gperf fontconfig-devel libpng-devel libxslt-devel \
+	libSM-devel libXrender-devel libxslt-devel gperf fontconfig-devel libpng-devel libXt-devel \
 	expat-devel libcurl-devel nss-devel nspr-devel libSM-devel openssl-devel expat-devel.x86_64 -y
 sudo yum groupinstall "Development Tools" -y
 
