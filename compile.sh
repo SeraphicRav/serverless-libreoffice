@@ -41,7 +41,7 @@ ccache --max-size 16 G && ccache -s
 	--disable-directx --disable-gui 
 
 # this will take 0-2 hours to compile, depends on your machine
-make
+make build-nocheck
 
 # this will remove ~100 MB of symbols from shared objects
 strip ./instdir/**/*
