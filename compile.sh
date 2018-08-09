@@ -5,9 +5,9 @@ SOURCE=heads/libreoffice-5-4-7
 # install basic stuff required for compilation
 sudo yum-config-manager --enable epel
 
-sudo yum remove  gcc48* gcc64*
+sudo yum remove  gcc48* gcc72*
 
-sudo yum install gcc72* git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
+sudo yum install gcc64* git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
 	gmp-devel libicu-devel icu python34-devel google-crosextra-caladea-fonts \
 	google-crosextra-carlito-fonts liberation-serif-fonts liberation-sans-fonts \
 	mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libICE-devel libepoxy-devel \
