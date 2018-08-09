@@ -35,7 +35,7 @@ ccache --max-size 16 G && ccache -s
 	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking \
 	--disable-extension-integration --disable-neon \
 	--disable-gui \
-	 --disable-systray --disable-directx 
+	# --disable-systray --disable-directx 
 
 # this will take 0-2 hours to compile, depends on your machine
 make build-nocheck
