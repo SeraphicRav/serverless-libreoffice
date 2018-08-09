@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-SOURCE=heads/libreoffice-5-4-7
-
 # install basic stuff required for compilation
 sudo yum-config-manager --enable epel
 
-sudo yum remove  gcc48* gcc72*
-
-sudo yum install gcc64* git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
+sudo yum install git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
 	gmp-devel libicu-devel icu python34-devel google-crosextra-caladea-fonts \
 	google-crosextra-carlito-fonts liberation-serif-fonts liberation-sans-fonts \
 	mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libICE-devel libepoxy-devel \
@@ -15,17 +11,15 @@ sudo yum install gcc64* git autoconf ccache nasm libffi-devel libmpc-devel mpfr-
 	expat-devel libcurl-devel nss-devel nspr-devel libSM-devel openssl-devel expat-devel.x86_64 -y
 sudo yum groupinstall "Development Tools" -y
 
-# clone libreoffice sources
-git clone --depth=1 git://anongit.freedesktop.org/libreoffice/core libreoffice
-cd libreoffice
-git fetch origin $SOURCE
-git checkout FETCH_HEAD
+wget http://download.documentfoundation.org/libreoffice/src/6.1.0/libreoffice-6.1.0.3.tar.xz
+tar xf libreoffice-6.1.0.3.tar.xz
+cd libreoffice-6.1.0.3
 
 # set this cache if you are going to compile several times
 ccache --max-size 16 G && ccache -s
 
 # the most important part. Run ./autogen.sh --help to see wha each option means
-./autogen.sh --disable-report-builder --disable-systray --disable-lpsolve --disable-coinmp \
+./autogen.sh --disable-report-builder --disable-lpsolve --disable-coinmp \
 	--enable-mergelibs --disable-odk --disable-gtk --disable-cairo-canvas \
 	--disable-dbus --disable-sdremote --disable-sdremote-bluetooth --disable-gio --disable-randr \
 	--disable-gstreamer-1-0 --disable-cve-tests --disable-cups --disable-extension-update \
@@ -38,7 +32,8 @@ ccache --max-size 16 G && ccache -s
 	--disable-introspection --without-krb5 --disable-python --disable-pch \
 	--with-system-openssl --with-system-curl --disable-ooenv --disable-dependency-tracking \
 	--disable-extension-integration --disable-neon \
-	--disable-directx --disable-gui 
+	--disable-gui \
+	 --disable-systray --disable-directx 
 
 # this will take 0-2 hours to compile, depends on your machine
 make build-nocheck
