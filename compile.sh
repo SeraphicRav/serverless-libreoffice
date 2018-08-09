@@ -10,6 +10,8 @@ sudo yum install git autoconf ccache nasm libffi-devel libmpc-devel mpfr-devel \
 	libSM-devel libXrender-devel libxslt-devel gperf fontconfig-devel libpng-devel libXt-devel \
 	expat-devel libcurl-devel nss-devel nspr-devel libSM-devel openssl-devel expat-devel.x86_64 -y
 sudo yum groupinstall "Development Tools" -y
+#A dependency added gcc72 without g++ blocking compilation
+sudo yum remove gcc72 kernel-devel-4.14.59-64.43.amzn1.x86_64
 
 wget http://download.documentfoundation.org/libreoffice/src/6.1.0/libreoffice-6.1.0.3.tar.xz
 tar xf libreoffice-6.1.0.3.tar.xz
